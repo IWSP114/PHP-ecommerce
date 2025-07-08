@@ -1,0 +1,142 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6f8fa;
+    color: #222;
+}
+
+.ecom-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 48px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #0070f3;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-bar {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    background: transparent;
+    width: 180px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    background: #0070f3;
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+
+.search-bar button:hover {
+    background: #005bb5;
+}
+
+.search-icon-container .search-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: cover;
+}
+
+.user-links a,
+.cart a {
+    margin-left: 12px;
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.user-links a:hover,
+.cart a:hover {
+    color: #0070f3;
+}
+
+.cart {
+    position: relative;
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .ecom-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 16px;
+    }
+    .main-nav ul {
+        gap: 16px;
+    }
+    .header-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+    }
+    .search-bar input[type="text"] {
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ecom-header {
+        padding: 10px 8px;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .logo img {
+        height: 36px;
+    }
+}
