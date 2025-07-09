@@ -13,6 +13,7 @@ $cartItemCount = 3; // Example cart items
         <div class="logo">
             <a href="/"><img src="images/header/logo.png" alt="Logo"></a>
         </div>
+
         <nav class="main-nav">
             <ul>
                 <li><a href="/shop.php">Shop</a></li>
@@ -21,6 +22,7 @@ $cartItemCount = 3; // Example cart items
                 <li><a href="/contact.php">Contact</a></li>
             </ul>
         </nav>
+
         <div class="header-actions">
             <form class="search-bar" action="/search.php" method="get">
                 <input type="text" name="q" placeholder="Search products...">
@@ -43,6 +45,7 @@ $cartItemCount = 3; // Example cart items
                 <a href="/cart.php">Cart (<?php echo $cartItemCount; ?>)</a>
             </div>
         </div>
+        
     </header>
 </body>
 </html>

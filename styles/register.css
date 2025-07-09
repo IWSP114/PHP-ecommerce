@@ -1,0 +1,89 @@
+/* Register Page Styles */
+.register-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(40, 116, 240, 0.12);
+    margin: 40px auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.register-form h2 {
+    margin-bottom: 24px;
+    color: #2874f0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fafbfc;
+    transition: border 0.2s;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    border-color: #2874f0;
+    outline: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px 0;
+    background: #2874f0;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background: #1859b7;
+}
+
+.register-links {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.register-links a {
+    color: #2874f0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.register-links a:hover {
+    color: #1859b7;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .register-container {
+        padding: 18px 8px;
+    }
+    .register-form h2 {
+        font-size: 20px;
+    }
+}
