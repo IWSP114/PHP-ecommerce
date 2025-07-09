@@ -1,0 +1,104 @@
+/* Deals Page Styles */
+.deals-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+}
+
+.deals-page h1 {
+    text-align: center;
+    color: #d32f2f; /* Red accent for deals */
+    margin-bottom: 36px;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.deal-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(211, 47, 47, 0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.deal-card:hover {
+    transform: translateY(-6px);
+}
+
+.deal-card img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.deal-card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #d32f2f;
+}
+
+.deal-card .description {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 12px;
+    flex-grow: 1;
+}
+
+.deal-card .price {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.deal-price {
+    color: #d32f2f;
+    margin-right: 12px;
+}
+
+.original-price {
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.add-to-cart-form button {
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.add-to-cart-form button:hover {
+    background-color: #9a2323;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .deals-page h1 {
+        font-size: 2rem;
+    }
+    .deal-card img {
+        height: 140px;
+    }
+}

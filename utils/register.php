@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST["fullname"], $_POST["email"], $_POST["username"], $_POST["password"])) {
 
-  $password = $_POST['password'] ?? '';
+  $password = htmlspecialchars($_POST['password']) ?? '';
 
   if (
     !preg_match('/[A-Z]/', $password) ||           // at least one uppercase

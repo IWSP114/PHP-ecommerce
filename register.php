@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Register - ShopEasy</title>
+    <title>Register - ShopKeeper</title>
     <link rel="stylesheet" href="./styles/register.css">
 </head>
 

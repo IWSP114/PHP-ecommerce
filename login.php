@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login - ShopEasy</title>
+    <title>Login - ShopKeeper</title>
     <link rel="stylesheet" href="./styles/login.css">
 </head>
 <body>

@@ -36,8 +36,9 @@ $(document).ready(function () {
     var formData = $(this).serialize();
 
     // Send the POST request
-    $.post({
+    $.ajax({
       url: './utils/register.php',
+      type: 'POST',
       data: formData,
       success: function (response) {
         try {
@@ -51,11 +52,16 @@ $(document).ready(function () {
           }
         } catch (e) {
           alert('Unexpected response from server.');
-          $('.error-message').text(jqXHR.responseText)
+          $('.error-message').text(response)
         }
       },
       error: function (jqXHR) {
-        const obj = JSON.parse(jqXHR.responseText);
+        let obj;
+        try {
+          obj = JSON.parse(jqXHR.responseText);
+        } catch (e) {
+          obj = { error: 'Unknown error occurred.' };
+        }
         alert('Failed to submit the form: ' + obj.error);
         $('.error-message').text(obj.error)
       }
@@ -71,8 +77,9 @@ $(document).ready(function () {
     var formData = $(this).serialize();
 
     // Send the POST request
-    $.post({
+    $.ajax({
       url: './utils/login.php',
+      type: 'POST',
       data: formData,
       success: function (response) {
         try {
