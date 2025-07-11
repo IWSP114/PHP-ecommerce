@@ -31,5 +31,5 @@
     </div>
 </body>
 <script src="./jquery-3.7.1.min.js"></script>
-<script src="./ajaxpost-script.js"></script>
+<script src="./ajax/post-script.js"></script>
 </html>

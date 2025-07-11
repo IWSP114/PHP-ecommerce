@@ -1,32 +1,57 @@
 <?php
-// Example cart data - in real use, fetch from session or database
-$cartItems = [
-    [
-        'id' => 1,
-        'name' => 'Classic Leather Jacket',
-        'price' => 129.99,
-        'quantity' => 2,
-        'image' => 'images/products/jacket1.jpg',
-        'size' => 'M',
-        'color' => 'Black',
-    ],
-    [
-        'id' => 2,
-        'name' => 'Sporty Sneakers',
-        'price' => 79.50,
-        'quantity' => 1,
-        'image' => 'images/products/sneakers1.jpg',
-        'size' => '42',
-        'color' => 'White',
-    ],
-];
+include("database.php");
 
-// Calculate totals
+// Assume you have a user ID from session or cookie
+$userId = $_COOKIE['user_id'] ?? null; // or $_SESSION['user_id']
+
+$productIds = [];
+$cartItems = [];
+
+// Fetch product IDs from Cart table for this user
+if ($userId) {
+    $stmt = $conn->prepare("SELECT ProductID, Quantity FROM Cart WHERE UserID = ?");
+    $stmt->execute([$userId]);
+    $cartRows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Extract product IDs and keep cart info
+    foreach ($cartRows as $row) {
+        $productIds[] = $row['ProductID'];
+        // Store quantity, size, color for later
+        $cartItems[$row['ProductID']] = [
+            'quantity' => $row['Quantity'],
+        ];
+    }
+}
+
+// Fetch product details
+$productsData = [];
+if (!empty($productIds)) {
+    $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+    $stmt = $conn->prepare("SELECT * FROM Products WHERE ProductID IN ($placeholders)");
+    $stmt->execute($productIds);
+    $productsData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Build final cart items array
+$cartDisplay = [];
+foreach ($productsData as $product) {
+    $pid = $product['ProductID'];
+    $cartDisplay[] = [
+        'id' => $pid,
+        'name' => $product['ProductName'],
+        'price' => $product['Price'],
+        'image' => 'images/products/' . $pid . '.jpg',
+        'quantity' => $cartItems[$pid]['quantity'] ?? 1,
+        'description' => $product['Description']
+    ];
+}
+
+// Use $cartDisplay for rendering and totals
 $subtotal = 0;
-foreach ($cartItems as $item) {
+foreach ($cartDisplay as $item) {
     $subtotal += $item['price'] * $item['quantity'];
 }
-$shipping = $subtotal > 100 ? 0 : 10; // Free shipping over $100
+$shipping = $subtotal > 100 ? 0 : 10;
 $total = $subtotal + $shipping;
 ?>
 <!DOCTYPE html>
@@ -44,16 +69,15 @@ $total = $subtotal + $shipping;
     <main class="cart-page container">
         <h1>Your Shopping Cart</h1>
 
-        <?php if (empty($cartItems)): ?>
+        <?php if (empty($cartDisplay)): ?>
             <p>Your cart is empty. <a href="products.php">Start shopping</a>.</p>
         <?php else: ?>
             <div class="cart-items">
-                <?php foreach ($cartItems as $item): ?>
+                <?php foreach ($cartDisplay as $item): ?>
                     <div class="cart-item">
                         <img src="<?php echo htmlspecialchars($item['image']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" />
                         <div class="item-details">
                             <h2><?php echo htmlspecialchars($item['name']); ?></h2>
-                            <p>Size: <?php echo htmlspecialchars($item['size']); ?> | Color: <?php echo htmlspecialchars($item['color']); ?></p>
                             <p>Price: $<?php echo number_format($item['price'], 2); ?></p>
                             <form method="post" action="update_cart.php" class="quantity-form">
                                 <label for="qty-<?php echo $item['id']; ?>">Quantity:</label>

@@ -13,12 +13,13 @@
     if($result) {
       http_response_code(200); // Set success status
       setcookie("user", $_POST["username"], time() + 3600, "/"); // Set cookie for 1 hour
+      setcookie("user_id", $result['AccountID'], time() + 3600, "/");
       echo json_encode(["success" => true]);
       exit;
     }
 
       http_response_code(409); // Set error status
-      echo json_encode(["error" => "The user already exist!"]);
+      echo json_encode(["error" => "The password or username incorrect."]);
       exit;
 
   } else {

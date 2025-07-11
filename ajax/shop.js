@@ -10,9 +10,7 @@ $(document).ready(function () {
             alert('Register failed: ' + data.error);
             $('.error-message').text(data.error)
           } else {
-            alert('Fetch successful!');
             const data = JSON.parse(response);
-            $('.error-message').text(data);
             // Render products dynamically from AJAX response
             let html = '';
             if (Array.isArray(data)) {
@@ -24,7 +22,7 @@ $(document).ready(function () {
                             <h2>${product.ProductName}</h2>
                             <p class="price">$${parseFloat(product.Price).toFixed(2)}</p>
                             <p class="description">${product.Description}</p>
-                            <form action="cart.php" method="post" class="add-to-cart-form">
+                            <form action="addToCart.php" method="post" class="add-to-cart-form">
                                 <input type="hidden" name="product_id" value="${product.ProductID}" />
                                 <button type="submit">Add to Cart</button>
                             </form>

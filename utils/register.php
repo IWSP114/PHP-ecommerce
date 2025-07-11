@@ -38,7 +38,6 @@ if (isset($_POST["fullname"], $_POST["email"], $_POST["username"], $_POST["passw
   $stmt->execute([$fullname, $email, $username, $hashedPassword]);
 
   http_response_code(200); // Set success status
-  setcookie("user", $_POST["username"], time() + 3600, "/"); // Set cookie for 1 hour
   echo json_encode(["register success" => true]);
   exit;
 } else {

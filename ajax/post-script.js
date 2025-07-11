@@ -37,7 +37,7 @@ $(document).ready(function () {
 
     // Send the POST request
     $.ajax({
-      url: './utils/register.php',
+      url: '../utils/register.php',
       type: 'POST',
       data: formData,
       success: function (response) {
@@ -78,7 +78,7 @@ $(document).ready(function () {
 
     // Send the POST request
     $.ajax({
-      url: './utils/login.php',
+      url: '../utils/login.php',
       type: 'POST',
       data: formData,
       success: function (response) {
