@@ -1,7 +1,16 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
+
 $userLoggedIn = false; // Set to true if user is logged in
-$userName = "John Doe"; // Example user name
-$cartItemCount = 3; // Example cart items
+$userName = ""; // Example user name
+$cartItemCount = 0; // Example cart items
+if (isset($_COOKIE['user'])) {
+    $userLoggedIn = true;
+    $userName = $_COOKIE['user'];
+    $cartItemCount = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

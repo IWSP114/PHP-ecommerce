@@ -1,0 +1,30 @@
+DROP TABLE Users;
+
+CREATE TABLE IF NOT EXISTS Users (
+    AccountID int NOT NULL AUTO_INCREMENT,
+    FullName varchar(255) NOT NULL,
+    Email varchar(255) NOT NULL,
+    UserName varchar(255) NOT NULL,
+    Password varchar(255) NOT NULL,
+    PRIMARY KEY (AccountID)
+);
+
+CREATE TABLE IF NOT EXISTS Products (
+    ProductID int NOT NULL AUTO_INCREMENT,
+    ProductName varchar(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description varchar(500) NOT NULL,
+    IS_DUEL boolean NOT NULL,
+    DealPrice DECIMAL(10, 2),
+    PRIMARY KEY (ProductID)
+);
+
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL) VALUES ('Classic Leather Jacket', 129.99, 'Premium quality leather jacket, perfect for any season.', FALSE);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL) VALUES ('Sporty Sneakers', 79.50, 'Comfortable and stylish sneakers for everyday wear.', FALSE);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL) VALUES ('Elegant Wristwatch', 199.00, 'Water-resistant wristwatch with a sleek design.', FALSE);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL) VALUES ('Casual Denim Jeans', 59.99, 'Classic fit denim jeans made from durable fabric.', FALSE);
+
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL, DealPrice) VALUES ('Wireless Bluetooth Headphones', 89.99, 'High-quality sound with noise cancellation.', TRUE, 59.99);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL, DealPrice) VALUES ('Smart Fitness Watch', 149.99, 'Track your health and activities with style.', TRUE, 99.99);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL, DealPrice) VALUES ('Portable Power Bank 10000mAh', 39.99, 'Charge your devices on the go.', TRUE, 24.99);
+INSERT INTO Products (ProductName, Price, Description, IS_DUEL, DealPrice) VALUES ('Wireless Ergonomic Mouse', 49.99, 'Comfortable design for long hours of use.', TRUE, 29.99);
